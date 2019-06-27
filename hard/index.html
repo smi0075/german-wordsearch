@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>German Word Find</title>
+  <link rel="shortcut icon" href="german-flag.jpg">
+  <link rel="stylesheet" type="text/css" href="style.css">
+  <meta name="google" content="notranslate">
+</head>
+<body>
+<div id="back">
+<p id="title">German Word Find by Smi0075 - hard</p>
+<div id="puzzle"></div><div id="overlay" onclick="off()"><ul id="ocontent"><li>Congratulations</li><li>you completed</li><li>the word find</li></ul></div>
+<div id="qa">
+<div id="words"></div>
+<div><button id="solve">solution</button><button id="solve"  onclick="location.reload();">reset</button></div>
+</div>
+<div id="timebox"><a id="timer"><time>00:00:00</time></a></div>
+</div>
+
+
+<script language="javascript" type="text/javascript" src="jquery.min.js"></script> 
+<script type="text/javascript" src="wordfind.js"></script> 
+<script type="text/javascript" src="wordfindgame.js"></script> 
+<script type="text/javascript" src="timer.js"></script> 
+<script>
+  var elem = document.documentElement;
+  var words = ['hund', 'Katze',
+               'Pferd', 'Wellensittich', 'Papagei', 'Schwein',
+               'Schaf', 'Hamster', 'Ratte', 'Maus', 'Hase', 'Insekt',
+                'Affe', 'Fisch', 'Schlange', 'Schnabeltier', 'Kanguru', 'Spinne', 'Wal', 'Biene', 'Ameise', 'Elefant', 'Krahe', 'Fledermaus','Dinosaurier',];
+
+  // start a word find game
+  var gamePuzzle = wordfindgame.create(words, '#puzzle', '#words');
+
+  $('#solve').click( function() {
+    wordfindgame.solve(gamePuzzle, words);
+  });
+
+  // create just a puzzle, without filling in the blanks and print to console
+  var puzzle = wordfind.newPuzzle(
+    words, 
+    {height: 18, width:18, fillBlanks: false}
+  );
+  wordfind.print(puzzle);
+
+  function off() {
+  document.getElementById("overlay").style.display = "none";
+}
+
+function openFullscreen() {
+  if (elem.requestFullscreen) {
+    elem.requestFullscreen();
+  } else if (elem.mozRequestFullScreen) { /* Firefox */
+    elem.mozRequestFullScreen();
+  } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari & Opera */
+    elem.webkitRequestFullscreen();
+  } else if (elem.msRequestFullscreen) { /* IE/Edge */
+    elem.msRequestFullscreen();
+  }
+}
+
+</script>
+
+</body></html>
